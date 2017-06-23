@@ -1,13 +1,18 @@
-#@namespace scala test
+#@namespace scala metrics
 
-struct Tweet {
-    1: i64 id
-    2: string text
-    3: string lang
+struct wordStat{
+    1: string word
+    2: i64 num
 }
 
+typedef list<wordStat> topWords
+
 service TwitterStatistics {
-    Tweet getTweet(
-        1: i64 id
+    topWords getTopWords (
+        1: string lang
+        2: i32 n
+    )
+    i64 getNumByLang (
+        1: string lang
     )
 }
